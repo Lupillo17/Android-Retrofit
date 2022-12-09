@@ -1,7 +1,9 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +26,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         setContentView(binding.root)
         binding.svDogs.setOnQueryTextListener(this)
         initRecyclerView()
+        binding.btnRandomImage.setOnClickListener {
+            startActivity(Intent(this, RandomImageActivity::class.java))
+        }
     }
 
     private fun initRecyclerView() {
@@ -45,9 +50,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             val puppies = call.body()
             runOnUiThread {
                 if (call.isSuccessful) {
-                    val images = puppies?.message ?: emptyList()
+                    val images = puppies?.message
                     dogImages.clear()
-                    dogImages.addAll(images)
+                    dogImages.addAll(images as List<String>)
                     adapter.notifyDataSetChanged()
                 } else {
                     showError()
@@ -57,7 +62,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     private fun showError() {
-        Toast.makeText(this, "Error ocurred", Toast.LENGTH_SHORT).show()
+        Log.d("ERROR", "ERROR OCURRED")
+        Toast.makeText(applicationContext, "Error ocurred", Toast.LENGTH_SHORT).show()
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

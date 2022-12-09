@@ -4,32 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".RandomImageActivity">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/svDogs"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/ivLoadingRandomImage"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_margin="20dp"
         app:layout_constraintVertical_bias="0"
+        android:background="@drawable/loading"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDogs"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/svDogs"
-        app:layout_constraintStart_toStartOf="parent"
+    <ImageView
+        android:id="@+id/ivRandomImage"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:scaleType="centerCrop"
+        android:layout_margin="20dp"
+        app:layout_constraintVertical_bias="0"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnRandomImage"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRandomImage"
+        android:id="@+id/btnRandomImage2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintVertical_bias="1"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="8dp"
         android:background="@color/btnColor"
@@ -40,7 +45,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/ivRandomImage"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

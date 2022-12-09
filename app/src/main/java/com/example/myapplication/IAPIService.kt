@@ -7,4 +7,7 @@ import retrofit2.http.Url
 interface IAPIService {
     @GET
     suspend fun getDogsByBreed(@Url url:String): Response<DogsResponse>
+
+    @GET("image/random")
+    suspend fun getRandomImage(): Response<DogsResponse>
 }
